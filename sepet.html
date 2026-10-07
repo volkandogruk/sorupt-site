@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sepet | SoruPT</title>
+<meta name="description" content="SoruPT sepet">
+<link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 40 40' aria-hidden='true'><rect width='40' height='40' rx='11' fill='%235EE2FF'/><circle cx='17.5' cy='17.5' r='8.5' fill='none' stroke='%23150F2E' stroke-width='3.6'/><path d='M24 24l7 7' stroke='%23150F2E' stroke-width='4' stroke-linecap='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="ust"><div class="wrap">
+<a class="logo" href="index.html" aria-label="SoruPT ana sayfa"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#5EE2FF"/><circle cx="17.5" cy="17.5" r="8.5" fill="none" stroke="#150F2E" stroke-width="3.6"/><path d="M24 24l7 7" stroke="#150F2E" stroke-width="4" stroke-linecap="round"/></svg><span>Soru<b>PT</b></span></a>
+<nav class="menu" aria-label="Ana menü"><a href="#nasil">Nasıl çalışır</a><a href="#paketler">Paketler</a><a href="#veliler">Veliler için</a><a href="#sss">Sık sorulanlar</a></nav>
+<a class="sepet-ikon" href="sepet.html" aria-label="Sepet"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.2a1.5 1.5 0 0 0 1.5 1.2h8.8a1.5 1.5 0 0 0 1.5-1.1L22 7H6"/></svg></a>
+<a class="btn" href="basvuru.html">Ücretsiz dene</a>
+</div></header>
+<main><section style="padding:56px 0 20px"><div class="wrap" style="max-width:760px">
+<h1 style="font-size:clamp(32px,4.5vw,46px)">Sepetiniz</h1>
+<div id="bos" class="form-kart" hidden><p style="margin:0 0 18px">Sepetiniz boş.</p><a class="btn" href="index.html#paketler">Paketlere göz at</a></div>
+<div id="dolu" hidden>
+<div class="form-kart" style="max-width:none">
+<div class="tablo"><table class="sepet-tablo">
+<thead><tr><th>Ürün</th><th>Adet</th><th style="text-align:right">Tutar</th></tr></thead>
+<tbody><tr><td><strong>SoruPT aylık paket</strong><br><span class="kucuk">30 gün · günde [GÜNLÜK SORU] soru · Telegram ile</span></td><td>1</td><td style="text-align:right">[FİYAT] TL</td></tr></tbody>
+<tfoot><tr><td colspan="2"><strong>Toplam (KDV dahil)</strong></td><td style="text-align:right"><strong>[FİYAT] TL</strong></td></tr></tfoot>
+</table></div>
+<button class="bag" type="button" id="kaldir">Sepetten çıkar</button>
+</div>
+<div class="form-kart" style="max-width:none;margin-top:22px">
+<h2 style="font-size:22px;margin:0 0 14px">Ödemeden önce</h2>
+<label class="onay"><input type="checkbox" class="z"> <span><a href="on-bilgilendirme.html" target="_blank">Ön bilgilendirme formunu</a> okudum ve onaylıyorum.</span></label>
+<label class="onay"><input type="checkbox" class="z"> <span><a href="mesafeli-satis.html" target="_blank">Mesafeli satış sözleşmesini</a> okudum ve kabul ediyorum.</span></label>
+<label class="onay"><input type="checkbox" class="z"> <span>Erişim kodunu Telegram'da etkinleştirdiğimde hizmetin onayımla başlayacağını ve bu andan sonra cayma hakkımın olmayacağını biliyorum (<a href="iade-iptal.html" target="_blank">iade ve iptal koşulları</a>).</span></label>
+<label class="onay"><input type="checkbox" class="z"> <span>18 yaşından büyüğüm; 18 yaşından küçük bir öğrenci için satın alıyorsam onun velisi veya yasal temsilcisiyim.</span></label>
+<p id="uyari" class="uyari" role="alert" hidden>Ödemeye geçmek için dört kutuyu da işaretleyin.</p>
+<button class="btn" type="button" id="ode" style="margin-top:10px">iyzico ile güvenli öde</button>
+<p class="kucuk" style="margin-top:14px">iyzico'nun güvenli ödeme sayfasına yönlendirileceksiniz. Ad, e-posta ve kart bilgileriniz orada alınır; kart bilgileriniz SoruPT'ye iletilmez. Ödeme onaylanınca erişim kodunuz e-posta ile gönderilir.</p>
+</div></div>
+</div></section></main>
+<script>
+(function(){
+  var KEY='sorupt_sepet', ODEME='[iyziLink ÖDEME LİNKİ]';
+  function oku(){try{return localStorage.getItem(KEY)==='aylik'}catch(e){return false}}
+  function yaz(v){try{v?localStorage.setItem(KEY,'aylik'):localStorage.removeItem(KEY)}catch(e){}}
+  var q=new URLSearchParams(location.search), var_=oku()||q.get('ekle')==='aylik';
+  if(q.get('ekle')==='aylik'){yaz(true);history.replaceState(null,'','sepet.html')}
+  function goster(v){document.getElementById('dolu').hidden=!v;document.getElementById('bos').hidden=v}
+  goster(var_);
+  document.getElementById('kaldir').onclick=function(){yaz(false);goster(false)};
+  document.getElementById('ode').onclick=function(){
+    var tamam=[].every.call(document.querySelectorAll('.z'),function(c){return c.checked});
+    document.getElementById('uyari').hidden=tamam;
+    if(!tamam)return;
+    if(ODEME.indexOf('http')!==0){alert('Ödeme sayfası henüz bağlanmadı.');return}
+    location.href=ODEME;
+  };
+})();
+</script>
+<footer><div class="wrap">
+<div><a class="logo" href="index.html"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#5EE2FF"/><circle cx="17.5" cy="17.5" r="8.5" fill="none" stroke="#150F2E" stroke-width="3.6"/><path d="M24 24l7 7" stroke="#150F2E" stroke-width="4" stroke-linecap="round"/></svg><span>Soru<b>PT</b></span></a>
+<p style="margin:12px 0 0">[ŞİRKET UNVANI]<br>[AÇIK ADRES]<br>Vergi dairesi / no: [VERGİ DAİRESİ] / [VERGİ NO]<br>
+E-posta: <a href="mailto:[E-POSTA]">[E-POSTA]</a><br>Telefon: [TELEFON]</p></div>
+<div><h4>Yasal</h4><ul>
+<li><a href="mesafeli-satis.html">Mesafeli satış sözleşmesi</a></li>
+<li><a href="on-bilgilendirme.html">Ön bilgilendirme formu</a></li>
+<li><a href="iade-iptal.html">İade ve iptal koşulları</a></li>
+<li><a href="kullanim-kosullari.html">Kullanım koşulları</a></li>
+<li><a href="kvkk.html">KVKK aydınlatma metni</a></li>
+<li><a href="gizlilik.html">Gizlilik ve çerez politikası</a></li></ul></div>
+<div><h4>SoruPT</h4><ul>
+<li><a href="index.html#nasil">Nasıl çalışır</a></li><li><a href="index.html#paketler">Paketler ve fiyatlar</a></li>
+<li><a href="basvuru.html">Ücretsiz deneme başvurusu</a></li><li><a href="iletisim.html">İletişim</a></li>
+<li><a href="https://www.instagram.com/sorupt.app">Instagram: @sorupt.app</a></li></ul>
+<p style="margin:16px 0 0">Ödemeler iyzico güvenli ödeme altyapısıyla alınır. Kart bilgileriniz SoruPT tarafından görülmez ve saklanmaz.</p>
+<div class="kartlar" aria-label="Kabul edilen kartlar"><span>VISA</span><span>Mastercard</span><span>Troy</span><span>iyzico</span></div></div>
+<p class="telif">© 2026 SoruPT. SoruPT adı ve logosu [ŞİRKET UNVANI]'na aittir. SoruPT, yapay zekâ kullanan bir öğrenme yardımcısıdır; öğretmenin ve okulun yerini tutmaz.</p>
+</div></footer>
+</body></html>
