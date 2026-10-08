@@ -59,7 +59,7 @@ _BOT_DIR = os.path.dirname(os.path.abspath(__file__))
 KART_DIR = os.environ.get("KART_DIR") or (os.path.join(_BOT_DIR, "kartlar")
                                           if os.path.exists(os.path.join(_BOT_DIR, "kartlar", "kartlar.json")) else _BOT_DIR)
 # kartlar.json ve kart resimleri "kartlar" klasöründe ya da doğrudan bot.py'nin yanında olabilir
-MAX_CATALOG = int(os.environ.get("MAX_CATALOG", "200"))
+MAX_CATALOG = int(os.environ.get("MAX_CATALOG", "1000"))
 TEST_DIR = os.environ.get("TEST_DIR", os.path.join(_BOT_DIR, "test"))   # /test komutunun soru resimleri ve cevaplar.csv
 TEST_GRADE = int(os.environ.get("TEST_GRADE", "12"))                   # testte öğrenci sınıfı (12: bütün katalog görünür)
 TEST_PARALLEL = int(os.environ.get("TEST_PARALLEL", "3"))              # testte aynı anda çözülen soru sayısı
